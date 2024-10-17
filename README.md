@@ -8,7 +8,8 @@
 ### Pré-requisitos
 
 1. **Node.js**: Certifique-se de ter o Node.js instalado. Você pode baixar em [nodejs.org](https://nodejs.org/).
-2. **Postman ou outra ferramenta para testes da api**: https://www.postman.com.
+2. **Postman ou outra ferramenta para testes HTP**: https://www.postman.com.
+3. **SQLiteStudio**: https://sqlitestudio.pl
 
 ### Passos para Iniciar o Projeto
 
@@ -23,4 +24,10 @@
 
 4. **Inicie o Servidor de Desenvolvimento** :
    node --watch src/index.js // este codigo utiliza --watch para iniciar o servidor e facilitar nas alterções continuas enquanto o servidor está online sem requerir que mate-o e o suba novamente( atualizações em tempo real por si dizer )
+   
+5. **Crie o banco no SQLiteStudio**:
+   1.Entre na aplicação SLLiteStudio
+   2.Vá em Databse > Adicionar Banco de dados
+   3.especifique o caminho do seu banco e o nome ex:: C:\Users\Administrador\Desktop\AgendeiJs\agendei-api\Agendei-Api-node.js\src\database nome: AgendeiJS
+   
 
