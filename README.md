@@ -8,12 +8,12 @@
 ### Pré-requisitos
 
 1. **Node.js**: Certifique-se de ter o Node.js instalado. Você pode baixar em [nodejs.org](https://nodejs.org/).
-2. **----**: ---------.
+2. **Postman ou outra ferramenta para testes da api**: https://www.postman.com.
 
 ### Passos para Iniciar o Projeto
 
 1. **Clone o Repositório**:
-    git clone https://github.com/RAFiSGODOY/Agendei-Api
+    git clone https://github.com/RAFiSGODOY/Agendei-Api-node.js
 
 2. **Navegue até o Diretório do Projeto**:
     cd NomeDoSeuProjeto
@@ -22,5 +22,5 @@
    npm install
 
 4. **Inicie o Servidor de Desenvolvimento** :
-   --------
+   node --watch src/index.js // este codigo utiliza --watch para iniciar o servidor e facilitar nas alterções continuas enquanto o servidor está online sem requerir que mate-o e o suba novamente( atualizações em tempo real por si dizer )
 
