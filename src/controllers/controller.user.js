@@ -27,8 +27,8 @@ async function Inserir(req, res) {
     const existingUser = await serviceUser.VerificarEmail(email);
     
     if (existingUser) {
-        // Retorna um status 401 e mensagem de erro se o email já estiver cadastrado
-        return res.status(401).json({ error: "Email já está cadastrado." });
+        // Retorna um status 409 (conflito) e mensagem de erro se o email já estiver cadastrado
+        return res.status(409).json({ error: "Email já está cadastrado." });
     }
 
     // Prossegue para inserir o novo usuário
