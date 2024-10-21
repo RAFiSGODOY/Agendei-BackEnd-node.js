@@ -1,7 +1,6 @@
 
 import serviceUser from "../services/service.user.js";
 
-
 async function Login(req, res) {
 
     const { email, password } = req.body;
@@ -19,13 +18,24 @@ async function Login(req, res) {
 
 
 async function Inserir(req, res) {
-
     const { name, email, password } = req.body;
 
-    const user = await serviceUser.Inserir(name, email, password);
-    res.status(201).json(user);
+    // Verifica se o email já existe
+    const existingUser = await serviceUser.VerificarEmail(email);
+    
+    if (existingUser){
+        return res.status(401).json({error: "Email já está cadastrado." });
+    }
 
+    // Prossegue para inserir o novo usuário
+    try {
+        const user = await serviceUser.Inserir(name, email, password);
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(500).json({error: "Erro ao cadastrar usuário." });
+    }
 }
+
 
 async function Profile(req, res){
 

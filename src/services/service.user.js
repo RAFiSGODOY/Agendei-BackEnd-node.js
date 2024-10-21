@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import repositoryUser from "../repositories/repository.user.js";
 import jwt from "../token.js";
-import { application } from "express";
 
 async function Profile(id_user) {
     const user = await repositoryUser.Profile(id_user);
@@ -39,7 +38,12 @@ async function Login(email, password) {
 
 }
 
+async function VerificarEmail(email) {
+    const user = await repositoryUser.VerificarEmail(email);
+    return user;
+}
 
 
 
-export default { Profile, Inserir, Login}
+
+export default { Profile, Inserir, Login, VerificarEmail}

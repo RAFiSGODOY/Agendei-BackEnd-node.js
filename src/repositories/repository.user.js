@@ -35,6 +35,14 @@ async function ListarByEmail(email) {
     
 }
 
+async function VerificarEmail(email) {
+    let sql = `SELECT * FROM users WHERE email = ?`;
+    const result = await query(sql, [email]);
+
+    // Retorna verdadeiro se o usuário existir, falso caso contrário
+    return result.length > 0; // Se o resultado tiver algum registro, o email já está cadastrado
+}
 
 
-export default { Profile , Inserir,  ListarByEmail }
+
+export default { Profile , Inserir,  ListarByEmail, VerificarEmail}
