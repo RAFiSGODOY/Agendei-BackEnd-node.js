@@ -40,9 +40,12 @@ router.get("/users/profile", jwt.ValideToken, controllerUser.Profile);
 // Rota para listar compromissos de um usuário específico (GET)
 router.get("/appointments", jwt.ValideToken, controllerAppointments.ListarByUser);
 
+//rota para verificar se usuario ja possui agendamentos marcados a essa hora do dia
 router.get("/appointments/check", jwt.ValideToken, repositoryAppointments.fetchAvailableHours);
 
+//rota para verificar se o usuario possui agendamento nessa data com outro medico 
 router.get("/appointments/checkUserAppointments", jwt.ValideToken, controllerAppointments.checkUserAppointments);
+
 // Rota para inserir um novo compromisso (POST)
 router.post("/appointments", jwt.ValideToken, controllerAppointments.Inserir);
 
