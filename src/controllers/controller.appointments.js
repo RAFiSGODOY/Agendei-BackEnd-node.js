@@ -44,5 +44,22 @@ async function Excluir(req, res) {
     res.status(200).json(appointment);
 }
 
+async function Check(req, res) {
+    const { booking_date, id_doctor, id_service } = req.body;
+
+        const result = await serviceAppointments.Check(booking_date, id_doctor, id_service);
+        res.status(200).json(result);
+    
+}
+
+async function checkUserAppointments(req, res) {
+    const { booking_date, booking_hour, id_user } = req.body;
+
+        const result = await serviceAppointments.checkUserAppointments(booking_date, booking_hour, id_user);
+        res.status(200).json(result);
+    
+}
+
+
 // Exporta as funções para uso em outros módulos
-export default { ListarByUser, Inserir, Excluir };
+export default { ListarByUser, Inserir, Excluir, Check, checkUserAppointments};

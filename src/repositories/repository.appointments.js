@@ -45,5 +45,63 @@ async function Excluir(id_user, id_appointment) {
     return appointment[0];
 }
 
+
+
+async function Check(booking_date, id_doctor, id_service) {
+    try {
+        let sql = `
+            SELECT booking_hour FROM appointments 
+            WHERE booking_date = ? AND id_doctor = ? AND id_service = ?
+        `;
+        
+        const result = await query(sql, [booking_date, id_doctor, id_service]);
+        
+        // Extraindo apenas as horas reservadas
+        const bookedHours = result.map(row => row.booking_hour);
+        
+        return bookedHours; // Retorna uma lista de horas já reservadas
+    } catch (error) {
+        console.error("Erro ao verificar horários:", error);
+        throw new Error("Erro ao verificar horários."); // Propaga o erro
+    }
+}
+async function fetchAvailableHours(req, res) {
+    const { booking_date, id_doctor, id_service } = req.query;
+    
+    try {
+        const bookedHours = await Check(booking_date, id_doctor, id_service);
+        
+        // Todos os horários disponíveis (modifique conforme necessário)
+        const allHours = [
+            "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
+            "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
+            "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+            "17:00", "17:30", "18:00"
+        ];
+        
+        // Filtra as horas disponíveis
+        const availableHours = allHours.filter(hour => !bookedHours.includes(hour));
+        
+        res.status(200).json(availableHours); // Retorna apenas os horários livres
+    } catch (error) {
+        console.error("Erro ao buscar horários disponíveis:", error);
+        res.status(500).json({ error: "Erro ao buscar horários disponíveis." });
+    }
+}
+
+
+async function checkUserAppointments(id_user, booking_date, booking_hour) {
+    let sql = `
+        SELECT COUNT(*) as count FROM appointments 
+        WHERE id_user = ? AND booking_date = ? AND booking_hour = ?
+    `;
+    const result = await query(sql, [id_user, booking_date, booking_hour]);
+    return result[0].count > 0;
+}
+
+
+
+
+
 // Exporta as funções para uso em outros módulos
-export default { Listar, Inserir, Excluir };
+export default { Listar, Inserir, Excluir,  fetchAvailableHours, Check, checkUserAppointments };

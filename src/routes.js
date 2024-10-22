@@ -3,6 +3,7 @@ import controllerDoctor from "./controllers/controller.doctor.js"; // Importa o 
 import controllerUser from "./controllers/controller.user.js"; // Importa o controlador de usuários
 import controllerAppointments from "./controllers/controller.appointments.js"; // Importa o controlador de compromissos
 import jwt from "./token.js"; // Importa o módulo para validação de tokens JWT
+import repositoryAppointments from "./repositories/repository.appointments.js";
 
 const router = Router(); // Cria uma instância do Router
 
@@ -39,6 +40,9 @@ router.get("/users/profile", jwt.ValideToken, controllerUser.Profile);
 // Rota para listar compromissos de um usuário específico (GET)
 router.get("/appointments", jwt.ValideToken, controllerAppointments.ListarByUser);
 
+router.get("/appointments/check", jwt.ValideToken, repositoryAppointments.fetchAvailableHours);
+
+router.get("/appointments/checkUserAppointments", jwt.ValideToken, controllerAppointments.checkUserAppointments);
 // Rota para inserir um novo compromisso (POST)
 router.post("/appointments", jwt.ValideToken, controllerAppointments.Inserir);
 
