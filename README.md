@@ -1,6 +1,8 @@
 # Agendei-BackEnd- Projeto Iniciado 17-10-2024
 
-   Back-end desenvolvido em Node.js utilizando auxilio do Postman para testes com foco no funcionamento do app Agendei-Mobile = {(ReactNative) => {Aplicativo desenvolvido para agendamento de consultas para pacientes com médicos, com aplicativo desenvolvido em react native jsx e um painel de controle web com react js. Com uma arquitetura avançada, o código é de fácil manutenção e documentado. Oferece temas personalizados e    uma interface intuitiva, garantindo uma experiência fluida para os usuários. Criado no projeto "Jornada de JS" do canal Dev Point. Desenvolvido para Android e Ios. Api em Node.js. Testes Feitos atraves do Postman.}}
+O back-end do projeto foi desenvolvido em Node.js, com o Postman utilizado para garantir a funcionalidade tanto do aplicativo Agendei-Mobile quanto do painel de controle web. O aplicativo, construído em React Native, permite que pacientes agendem consultas com médicos, enquanto o painel em React.js oferece uma gestão eficiente para clínicas.
+
+A arquitetura avançada do sistema garante que o código seja de fácil manutenção e bem documentado. Com temas personalizados e uma interface intuitiva, a experiência do usuário é fluida e agradável. Compatível com Android e iOS. A API em Node.js foi testada minuciosamente com o Postman, assegurando a qualidade e robustez da aplicação.
 
 # STATUS DO PROJETO : FINALIZADO
 
