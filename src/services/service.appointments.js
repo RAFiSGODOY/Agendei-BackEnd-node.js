@@ -29,19 +29,13 @@ async function Excluir(id_user, id_appointment) {
     return appointment;
 }
 
-async function Check(booking_date, id_doctor, id_service) {
+async function Check(booking_date) {
   
-        const result = await repositoryAppointments.Check(booking_date,  id_doctor, id_service); 
+        const result = await repositoryAppointments.Check(booking_date); 
         return result; 
     
 }
 
-async function checkUserAppointments(booking_date, booking_hour, id_user) {
-  
-    const result = await repositoryAppointments.checkUserAppointments(booking_date,  booking_hour, id_user); 
-    return result; 
-
-}
 
 // Exporta as funções para uso em outros módulos
-export default { Listar, Inserir, Excluir, Check, checkUserAppointments};
+export default { Listar, Inserir, Excluir, Check};
