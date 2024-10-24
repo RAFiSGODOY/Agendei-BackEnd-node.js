@@ -4,8 +4,13 @@ import controllerUser from "./controllers/controller.user.js"; // Importa o cont
 import controllerAppointments from "./controllers/controller.appointments.js"; // Importa o controlador de compromissos
 import jwt from "./token.js"; // Importa o módulo para validação de tokens JWT
 import repositoryAppointments from "./repositories/repository.appointments.js";
+import controllerAdmin from "./controllers/controller.admin.js";
 
 const router = Router(); // Cria uma instância do Router
+
+
+
+
 
 // Rotas para médicos (Doctors)
 
@@ -24,6 +29,10 @@ router.delete("/doctors/:id_doctor", jwt.ValideToken, controllerDoctor.Excluir);
 // Rota para listar os serviços de um médico específico (GET)
 router.get("/doctors/:id_doctor/services", jwt.ValideToken, controllerDoctor.ListarServicos);
 
+
+
+
+
 // Rotas para usuários (Users)
 
 // Rota para registrar um novo usuário (POST)
@@ -34,6 +43,11 @@ router.post("/users/login", controllerUser.Login);
 
 // Rota para obter o perfil do usuário (GET)
 router.get("/users/profile", jwt.ValideToken, controllerUser.Profile);
+
+
+
+
+
 
 // Rotas para compromissos (Appointments)
 
@@ -50,5 +64,21 @@ router.post("/appointments", jwt.ValideToken, controllerAppointments.Inserir);
 // Rota para excluir um compromisso existente (DELETE)
 router.delete("/appointments/:id_appointment", jwt.ValideToken, controllerAppointments.Excluir);
 
-// Exporta as rotas definidas para uso em outros módulos
+
+
+// Admins
+
+// Rota para registrar um novo administrador (POST)
+router.post("/admin/register", controllerAdmin.Inserir);
+
+// Rota para realizar login de um administrador (POST)
+router.post("/admin/login", controllerAdmin.Login);
+
+// Rota para obter o perfil do administrador (GET)
+router.get("/admin/profile", jwt.ValideToken, controllerAdmin.Profile);
+
+router.get("/admin/appointments", jwt.ValideToken, controllerAppointments.ListarByAdmin);
+
+
+
 export default router;

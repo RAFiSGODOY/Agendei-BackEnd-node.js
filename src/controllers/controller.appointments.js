@@ -54,5 +54,19 @@ async function Check(req, res) {
 }
 
 
+async function ListarByAdmin(req, res) {
+    // Obtém o id_user a partir do objeto de requisição (presumivelmente definido por um middleware anterior)
+    const dt_start = req.query.dt_start;
+    const dt_end = req.query.dt_end;
+    const id_doctor = req.query.id_doctor;
+
+    // Chama a função de listar compromissos do serviço, passando o id_user como parâmetro
+    const appointments = await serviceAppointments.ListarByAdmin(dt_start, dt_end, id_doctor);
+    
+    // Retorna um status 200 e a lista de compromissos do usuário
+    res.status(200).json(appointments);
+}
+
+
 // Exporta as funções para uso em outros módulos
-export default { ListarByUser, Inserir, Excluir, Check};
+export default { ListarByUser, Inserir, Excluir, Check, ListarByAdmin};

@@ -37,5 +37,14 @@ async function Check(booking_date) {
 }
 
 
+async function ListarByAdmin(dt_start,dt_end,id_doctor) {
+    // Chama a função de listar do repositório de compromissos, passando o id_user como parâmetro
+    const appointments = await repositoryAppointments.ListarByAdmin(dt_start,dt_end,id_doctor);
+
+    // Retorna a lista de compromissos
+    return appointments;
+}
+
+
 // Exporta as funções para uso em outros módulos
-export default { Listar, Inserir, Excluir, Check};
+export default { Listar, Inserir, Excluir, Check, ListarByAdmin};
