@@ -36,6 +36,7 @@ async function Excluir(req, res) {
 
     // Obtém o id_appointment a partir dos parâmetros da requisição
     const id_appointment = req.params.id_appointment;
+    
 
     // Chama a função de exclusão do serviço de compromissos, passando o id_user e o id_appointment
     const appointment = await serviceAppointments.Excluir(id_user, id_appointment);
